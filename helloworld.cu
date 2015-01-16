@@ -4,7 +4,7 @@ const int N = 16;
 const int blocksize = 16;
 
 __global__
-void hello(char *a, int *b)
+void helloworld(char *a, int *b)
 {
 	a[threadIdx.x] += b[threadIdx.x];
 }
@@ -28,7 +28,7 @@ int main()
 
 	dim3 dimBlock( blocksize, 1 );
 	dim3 dimGrid( 1, 1 );
-	hello<<<dimGrid, dimBlock>>>(ad, bd);
+	helloworld<<<dimGrid, dimBlock>>>(ad, bd);
 	cudaMemcpy( a, ad, csize, cudaMemcpyDeviceToHost );
 	cudaFree( ad );
 	cudaFree( bd );
